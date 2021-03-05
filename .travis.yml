@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run -e CI=true florinnica/docker-react npm run test
+# 6G81zyVsnxWpL1J9aVpei4wEOvARTPW5MIhdbcxT
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "docker-app"
+  env: "Dockerapp-env"
+  bucket_name: "elasticbeanstalk-us-west-2-043977816145"
+  bucket_path: "docker-app"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
